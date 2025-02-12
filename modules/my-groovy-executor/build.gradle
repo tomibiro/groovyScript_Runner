@@ -4,7 +4,8 @@ java {
 	}
 }
 dependencies {
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "default"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "[5.0,6)"
 	compileOnly group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.21"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.4.0"
+	compileOnly group: "javax.portlet", name: "portlet-api", version: "3.0.0"
 }
