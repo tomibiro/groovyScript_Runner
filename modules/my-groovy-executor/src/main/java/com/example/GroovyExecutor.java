@@ -1,6 +1,10 @@
 package com.example;
 
+import com.liferay.portal.kernel.util.AggregateClassLoader;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
+import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
+import groovy.lang.Script;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
@@ -8,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component(
 		immediate = true,
@@ -15,7 +21,7 @@ import java.nio.file.Paths;
 )
 public class GroovyExecutor {
 
-	private static final String SCRIPT_PATH = "c:\\git\\bundles\\7.4.3.125-ga125\\scripts\\myscript.groovy";
+	private static final String SCRIPT_PATH = "c:\\git\\bundles\\master\\scripts\\myscript.groovy";
 
 	@Activate
 	public void activate() {
@@ -30,11 +36,35 @@ public class GroovyExecutor {
 
 		try {
 			String scriptContent = new String(Files.readAllBytes(Paths.get(SCRIPT_PATH)));
-			GroovyShell shell = new GroovyShell();
-			shell.evaluate(scriptContent);
-			System.out.println("Groovy script finished.");
+			_executeScript(_createBundleObjects(), scriptContent);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private Map<String, Object> _createBundleObjects (){
+		Map<String, Object> bundleObjects = new HashMap<String, Object>();
+
+		/*bundleObjects.put(
+				"userInfo", _portletRequest.getAttribute(PortletRequest.USER_INFO));*/
+
+		return bundleObjects;
+	}
+
+	private void _executeScript(Map<String, Object> inputObjects, String script) {
+		Class<?> clazz = GroovyExecutor.class;
+
+		Thread currentThread = Thread.currentThread();
+
+		GroovyShell groovyShell = new GroovyShell(
+				AggregateClassLoader.getAggregateClassLoader(
+						clazz.getClassLoader(), currentThread.getContextClassLoader()));
+
+		Script compiledScript = groovyShell.parse(script);
+		compiledScript.setBinding(new Binding(inputObjects));
+		compiledScript.run();
+
+		System.out.println("Groovy script finished.");
 	}
 }
