@@ -1,17 +1,11 @@
 package com.example;
 
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.service.CompanyLocalService;
-import com.liferay.portal.kernel.service.GroupLocalService;
-import com.liferay.portal.kernel.service.LayoutLocalService;
-import com.liferay.portal.kernel.service.UserLocalService;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
-import javax.portlet.PortletRequest;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,21 +17,6 @@ import java.nio.file.Paths;
 		service = GroovyExecutor.class
 )
 public class GroovyExecutor {
-
-	@Reference
-	private UserLocalService userLocalService;
-
-	@Reference
-	private CompanyLocalService companyLocalService;
-
-	@Reference
-	private GroupLocalService groupLocalService;
-
-	@Reference
-	private LayoutLocalService layoutLocalService;
-
-	@Reference
-	private PortletRequest portletRequest;
 
 	private static final String SCRIPT_PATH = "c:\\git\\bundles\\7.4.3.125-ga125\\scripts\\create_user.groovy";
 
@@ -83,31 +62,7 @@ public class GroovyExecutor {
 
 		Binding binding = new Binding();
 
-		Object user = portletRequest.getAttribute(PortletRequest.USER_INFO);
-
-		/*long companyId = PortalUtil.getCompanyId(request);
-		Company company = companyLocalService.getCompany(companyId);*/
-		//User user = userLocalService.getUserById(PortalUtil.getUserId(request));
-		/*Group group = groupLocalService.getGroup(companyId, "Guest");
-		Layout layout = layoutLocalService.getLayouts(group.getGroupId(), false).get(0);
-		ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
-
-		ThemeDisplay themeDisplay = new ThemeDisplay();
-		themeDisplay.setUser(user);
-		themeDisplay.setCompany(company);
-		themeDisplay.setScopeGroupId(group.getGroupId());
-
-		binding.setVariable("company", company);
-		binding.setVariable("user", user);
-		binding.setVariable("themeDisplay", themeDisplay);
-		binding.setVariable("serviceContext", serviceContext);
-		binding.setVariable("group", group);
-		binding.setVariable("layout", layout);
-		binding.setVariable("request", request);
-		binding.setVariable("response", response);
-*/
-
-		binding.setVariable("userinfo", user);
+		binding.setVariable("user", com.liferay.portal.kernel.service.UserLocalServiceUtil.getUserById(20123));
 
 		return binding;
 	}
