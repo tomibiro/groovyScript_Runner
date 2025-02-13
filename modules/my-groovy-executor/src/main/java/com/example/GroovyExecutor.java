@@ -1,6 +1,10 @@
 package com.example;
 
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.CompanyLocalService;
+import com.liferay.portal.kernel.service.GroupLocalService;
+import com.liferay.portal.kernel.service.LayoutLocalService;
+import com.liferay.portal.kernel.service.UserLocalService;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
@@ -20,7 +24,7 @@ import java.nio.file.Paths;
 )
 public class GroovyExecutor {
 
-	/*@Reference
+	@Reference
 	private UserLocalService userLocalService;
 
 	@Reference
@@ -30,12 +34,12 @@ public class GroovyExecutor {
 	private GroupLocalService groupLocalService;
 
 	@Reference
-	private LayoutLocalService layoutLocalService;*/
+	private LayoutLocalService layoutLocalService;
 
 	@Reference
 	private PortletRequest portletRequest;
 
-	private static final String SCRIPT_PATH = "c:\\git\\bundles\\master\\scripts\\create_user.groovy";
+	private static final String SCRIPT_PATH = "c:\\git\\bundles\\7.4.3.125-ga125\\scripts\\create_user.groovy";
 
 	@Activate
 	public void activate() {

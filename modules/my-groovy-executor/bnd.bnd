@@ -1,3 +1,9 @@
 Bundle-Name: my-groovy-executor
 Bundle-SymbolicName: com.example
 Bundle-Version: 1.0.0
+Import-Package: \
+    com.liferay.portal.kernel.service, \
+    com.liferay.portal.kernel.model, \
+    com.liferay.portal.kernel.theme, \
+    com.liferay.portal.kernel.util, \
+    org.osgi.framework
