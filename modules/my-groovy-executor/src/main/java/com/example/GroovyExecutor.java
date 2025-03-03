@@ -1,7 +1,6 @@
 package com.example;
 
 import com.liferay.portal.kernel.util.AggregateClassLoader;
-import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
@@ -12,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 
 @Component(
@@ -44,10 +43,7 @@ public class GroovyExecutor {
 	}
 	
 	private Map<String, Object> _createBundleObjects (){
-		Map<String, Object> bundleObjects = new HashMap<String, Object>();
-
-		/*bundleObjects.put(
-				"userInfo", _portletRequest.getAttribute(PortletRequest.USER_INFO));*/
+		Map<String, Object> bundleObjects = Collections.singletonMap("variable", "string");
 
 		return bundleObjects;
 	}
@@ -59,7 +55,9 @@ public class GroovyExecutor {
 
 		GroovyShell groovyShell = new GroovyShell(
 				AggregateClassLoader.getAggregateClassLoader(
-						clazz.getClassLoader(), currentThread.getContextClassLoader()));
+						clazz.getClassLoader(), currentThread.getContextClassLoader(),
+						GroovyShell.class.getClassLoader())
+		);
 
 		Script compiledScript = groovyShell.parse(script);
 		compiledScript.setBinding(new Binding(inputObjects));
