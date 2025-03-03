@@ -20,7 +20,8 @@ import java.util.Map;
 )
 public class GroovyExecutor {
 
-	private static final String SCRIPT_PATH = "c:\\git\\bundles\\master\\scripts\\myscript.groovy";
+	//this searches the path inside the Liferay container. Modify this path if you want to populate script file locally
+	private static final String SCRIPT_PATH = "/mnt/liferay/scripts/myscript.groovy";
 
 	@Activate
 	public void activate() {
