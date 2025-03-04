@@ -4,5 +4,16 @@ Bundle-Version: 1.0.0
 Import-Package: groovy.lang, \
     com.liferay.portal.kernel.service, \
     com.liferay.portal.kernel.util, \
+    com.liferay.account.constants, \
+    com.liferay.account.model, \
+    com.liferay.account.service, \
+    com.liferay.asset.kernel, \
+    com.liferay.blogs.model, \
+    com.liferay.blogs.service, \
+    com.liferay.dynamic.data.mapping.model, \
+    com.liferay.dynamic.data.mapping.service, \
+    com.liferay.message.boards.constants, \
+    com.liferay.message.boards.model, \
+    com.liferay.message.boards.service, \
     org.osgi.framework, \
     org.apache.commons.lang3
