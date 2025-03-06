@@ -2,18 +2,39 @@ Bundle-Name: my-groovy-executor
 Bundle-SymbolicName: com.example
 Bundle-Version: 1.0.0
 Import-Package: groovy.lang, \
-    com.liferay.portal.kernel.service, \
-    com.liferay.portal.kernel.util, \
     com.liferay.account.constants, \
     com.liferay.account.model, \
     com.liferay.account.service, \
     com.liferay.asset.kernel, \
+    com.liferay.asset.link.constants, \
+    com.liferay.asset.link.service, \
     com.liferay.blogs.model, \
     com.liferay.blogs.service, \
+    com.liferay.calendar.model, \
+    com.liferay.calendar.service, \
+    com.liferay.calendar.util, \
+    com.liferay.contacts.service, \
+    com.liferay.dynamic.data.lists.model, \
+    com.liferay.dynamic.data.lists.service, \
     com.liferay.dynamic.data.mapping.model, \
     com.liferay.dynamic.data.mapping.service, \
+    com.liferay.dynamic.data.mapping.util, \
+    com.liferay.fragment.service, \
+    com.liferay.journal.service, \
+    com.liferay.knowledge.base.constants, \
+    com.liferay.knowledge.base.model, \
+    com.liferay.knowledge.base.service, \
+    com.liferay.layout.page.template.service, \
+    com.liferay.layout.util.structure, \
     com.liferay.message.boards.constants, \
     com.liferay.message.boards.model, \
     com.liferay.message.boards.service, \
+    com.liferay.portal.kernel.service, \
+    com.liferay.portal.kernel.util, \
+    com.liferay.segments.service, \
+    com.liferay.subscription.service, \
+    com.liferay.wiki.constants, \
+    com.liferay.wiki.service, \
     org.osgi.framework, \
+    org.osgi.service.cm, \
     org.apache.commons.lang3

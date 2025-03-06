@@ -6,5 +6,6 @@ java {
 dependencies {
 	compileOnly group: "com.liferay.portal", name: "release.dxp.api", version: "7.4.13-u132"
 	compileOnly group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.21"
+	compileOnly group: "org.osgi", name: "org.osgi.service.cm", version: "1.6.0"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.4.0"
 }
