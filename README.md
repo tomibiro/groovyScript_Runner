@@ -3,9 +3,10 @@ The main goal is to populate dummy data with groovy scripts to running Liferay c
 
 The usage of the module:
 
-1, start a Liferay bundle localy or in Docker container.
+1, start a Liferay bundle locally or in Docker container.
 
 2, modify the build.gradle file with the Liferay version to create a compatible build.
+(compileOnly group: "com.liferay.portal", name: "release.dxp.api", version: "<your exact Liferay version")
 
 3, modify the SCRIPT_PATH to the dedicated groovy script path if you would like to run localy.
 
@@ -13,4 +14,4 @@ The usage of the module:
 
 5, you will find the created .jar file in \modules\my-groovy-executor\build\libs\
 
-10, copy this jar to the Liferay's \deploy folder or to the mounted container's folder (e.g. \groovy_script_runner folder in the docker config)
+10, copy this jar to the Liferay's \deploy folder or to the mounted container's \deploy folder 
