@@ -37,4 +37,5 @@ Import-Package: groovy.lang, \
     com.liferay.wiki.service, \
     org.osgi.framework, \
     org.osgi.service.cm, \
-    org.apache.commons.lang3
+    org.apache.commons.lang3, \
+    com.liferay.portal.kernel.log
